@@ -15,6 +15,10 @@ export default function Twin() {
     const [input, setInput] = useState('');
     const [isLoading, setIsLoading] = useState(false);
     const [sessionId, setSessionId] = useState<string>('');
+    
+    // REFACTOR: Replaced expensive fetch check with simple error state
+    const [avatarError, setAvatarError] = useState(false); 
+
     const messagesEndRef = useRef<HTMLDivElement>(null);
     const inputRef = useRef<HTMLInputElement>(null);
 
@@ -41,7 +45,10 @@ export default function Twin() {
         setIsLoading(true);
 
         try {
-            const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000'}/chat`, {
+            // Ensure this ENV variable is set in production
+            const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000';
+            
+            const response = await fetch(`${apiUrl}/chat`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -92,12 +99,24 @@ export default function Twin() {
         }
     };
 
-    const [hasAvatar, setHasAvatar] = useState(false);
-    useEffect(() => {
-        fetch('/avatar.jpg', { method: 'HEAD' })
-            .then(res => setHasAvatar(res.ok))
-            .catch(() => setHasAvatar(false));
-    }, []);
+    // Helper to render avatar or fallback icon
+    const renderAvatar = (sizeClass: string = "w-8 h-8", iconSize: string = "w-5 h-5") => {
+        if (avatarError) {
+            return (
+                <div className={`${sizeClass} bg-slate-700 rounded-full flex items-center justify-center`}>
+                    <Bot className={`${iconSize} text-white`} />
+                </div>
+            );
+        }
+        return (
+            <img 
+                src="/avatar.jpg" 
+                alt="Digital Twin Avatar" 
+                className={`${sizeClass} rounded-full border border-slate-300 object-cover`}
+                onError={() => setAvatarError(true)}
+            />
+        );
+    };
 
     return (
         <div className="flex flex-col h-full bg-gray-50 rounded-lg shadow-lg">
@@ -112,17 +131,19 @@ export default function Twin() {
             {/* Messages */}
             <div className="flex-1 overflow-y-auto p-4 space-y-4">
                 {messages.length === 0 && (
-                    <div className="text-center text-gray-500 mt-8">
-                        {hasAvatar ? (
-                            <img 
-                                src="/avatar.jpg" 
-                                alt="Digital Twin Avatar" 
-                                className="w-20 h-20 rounded-full mx-auto mb-3 border-2 border-gray-300"
-                            />
-                        ) : (
-                            <Bot className="w-12 h-12 mx-auto mb-3 text-gray-400" />
-                        )}
-                        <p>Hello! I&apos;m Gian Marco Oddo&apos;s Digital Twin.</p>
+                    <div className="text-center mt-8">
+                        {/* Large Avatar for Intro */}
+                        <div className="flex justify-center mb-4">
+                            {renderAvatar("w-24 h-24", "w-12 h-12")}
+                        </div>
+                        
+                        <h3 className="text-lg font-medium text-gray-800">
+                            Hello! I&apos;m Gian Marco Oddo&apos;s Digital Twin.
+                        </h3>
+                        {/* NEW INSTRUCTION TEXT */}
+                        <p className="text-sm text-gray-500 mt-2">
+                            Ask anything about me (professional background, skills, etc)
+                        </p>
                     </div>
                 )}
 
@@ -135,17 +156,7 @@ export default function Twin() {
                     >
                         {message.role === 'assistant' && (
                             <div className="flex-shrink-0">
-                                {hasAvatar ? (
-                                    <img 
-                                        src="/avatar.jpg" 
-                                        alt="Digital Twin Avatar" 
-                                        className="w-8 h-8 rounded-full border border-slate-300"
-                                    />
-                                ) : (
-                                    <div className="w-8 h-8 bg-slate-700 rounded-full flex items-center justify-center">
-                                        <Bot className="w-5 h-5 text-white" />
-                                    </div>
-                                )}
+                                {renderAvatar()}
                             </div>
                         )}
 
@@ -162,7 +173,7 @@ export default function Twin() {
                                     message.role === 'user' ? 'text-slate-300' : 'text-gray-500'
                                 }`}
                             >
-                                {message.timestamp.toLocaleTimeString()}
+                                {message.timestamp.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
                             </p>
                         </div>
 
@@ -179,17 +190,7 @@ export default function Twin() {
                 {isLoading && (
                     <div className="flex gap-3 justify-start">
                         <div className="flex-shrink-0">
-                            {hasAvatar ? (
-                                <img 
-                                    src="/avatar.jpg" 
-                                    alt="Digital Twin Avatar" 
-                                    className="w-8 h-8 rounded-full border border-slate-300"
-                                />
-                            ) : (
-                                <div className="w-8 h-8 bg-slate-700 rounded-full flex items-center justify-center">
-                                    <Bot className="w-5 h-5 text-white" />
-                                </div>
-                            )}
+                            {renderAvatar()}
                         </div>
                         <div className="bg-white border border-gray-200 rounded-lg p-3">
                             <div className="flex space-x-2">
