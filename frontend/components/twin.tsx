@@ -107,7 +107,6 @@ export default function Twin() {
                     <Bot className="w-6 h-6" />
                     Gian Marco Oddo's AI Digital Twin
                 </h2>
-                <p className="text-sm text-slate-300 mt-1">His AI CV companion</p>
             </div>
 
             {/* Messages */}
@@ -124,7 +123,6 @@ export default function Twin() {
                             <Bot className="w-12 h-12 mx-auto mb-3 text-gray-400" />
                         )}
                         <p>Hello! I&apos;m Gian Marco Oddo&apos;s Digital Twin.</p>
-                        {/* DELETED LINE WAS HERE */}
                     </div>
                 )}
 
