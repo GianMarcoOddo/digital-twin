@@ -79,7 +79,6 @@ export default function Twin() {
             setMessages(prev => [...prev, errorMessage]);
         } finally {
             setIsLoading(false);
-            // Refocus the input after message is sent
             setTimeout(() => {
                 inputRef.current?.focus();
             }, 100);
@@ -93,10 +92,8 @@ export default function Twin() {
         }
     };
 
-    // Check if avatar exists
     const [hasAvatar, setHasAvatar] = useState(false);
     useEffect(() => {
-        // Check if avatar.png exists
         fetch('/avatar.jpg', { method: 'HEAD' })
             .then(res => setHasAvatar(res.ok))
             .catch(() => setHasAvatar(false));
@@ -126,8 +123,8 @@ export default function Twin() {
                         ) : (
                             <Bot className="w-12 h-12 mx-auto mb-3 text-gray-400" />
                         )}
-                        <p>Hello! I&apos;m Gian Marco Oddo's Digital Twin.</p>
-                        <p className="text-sm mt-2">Ask me anything about him!</p>
+                        <p>Hello! I&apos;m Gian Marco Oddo&apos;s Digital Twin.</p>
+                        {/* DELETED LINE WAS HERE */}
                     </div>
                 )}
 
