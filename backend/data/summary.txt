@@ -1,0 +1,6 @@
+I am a Quantitative Research Analyst with 2 years of experience in quantitative finance and data science. 
+My expertise includes data analysis, data science, ML and AI, tail-risk hedging strategies, quantitative finance & risk management, and options trading & volatility analysis.
+
+Currently, I'm focused on building quantitative investment strategies and data infrastructure at Fourth Quadrant Investment Group, developing tail-risk hedging frameworks and multi-asset backtesting engines. I am also extensively studying ML and AI frameworks, from multi-agent architectures to cloud deployment.
+
+My background includes co-designing synthetic order book simulations at SIX Swiss Exchange, automating risk analytics pipelines, developing the pyriskmgmt Python library, and graduating summa cum laude from both my MSc in Finance at USI (top student award) and Bachelor's at UNIVR.

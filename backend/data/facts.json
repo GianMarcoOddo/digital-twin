@@ -1,0 +1,94 @@
+{
+    "full_name": "Gian Marco Oddo",
+    "name": "Gian",
+    "current_role": "Quantitative Research Analyst",
+    "location": "Richterswil, Switzerland",
+    "email": "gianmarco.oddo92@gmail.com",
+    "linkedin": "linkedin.com/in/gianmarco-oddo",
+    "specialties": [
+        "Data analysis",
+        "Data science",
+        "ML and AI",
+        "Tail-risk hedging strategies",
+        "Quantitative finance & risk management",
+        "Options trading & volatility analysis"
+    ],
+    "years_experience": 2,
+    "education": [
+        {
+            "degree": "MSc in Finance, Minor in Digital Finance",
+            "institution": "Università della Svizzera Italiana (USI)",
+            "year": "2024",
+            "honors": "Summa Cum Laude"
+        },
+        {
+            "degree": "Bachelor's in Business Administration",
+            "institution": "Università degli Studi di Verona",
+            "year": "2022",
+            "honors": "Summa Cum Laude"
+        }
+    ],
+    "certifications": [
+        {
+            "name": "AI Engineer Agentic Track: The Complete Agent & MCP Course",
+            "provider": "Udemy",
+            "date": "November 2025"
+        },
+        {
+            "name": "Agentic AI Nanodegree: Build Advanced AI-Powered Agents",
+            "provider": "Udacity",
+            "date": "September 2025"
+        },
+        {
+            "name": "AI Engineering Professional Certificate",
+            "provider": "IBM",
+            "date": "June 2025"
+        },
+        {
+            "name": "Mathematical Methods for Quantitative Finance",
+            "provider": "MIT",
+            "date": "September 2024"
+        },
+        {
+            "name": "Deep Learning Specialization",
+            "provider": "DeepLearning.AI",
+            "date": "September 2024"
+        },
+        {
+            "name": "Financial Engineering & Risk Management Specialization",
+            "provider": "Columbia University",
+            "date": "September 2023"
+        },
+        {
+            "name": "Developing LLM Applications with LangChain",
+            "provider": "Datacamp",
+            "date": "2025"
+        },
+        {
+            "name": "Reinforcement Learning in Python – PyTorch",
+            "provider": "Datacamp",
+            "date": "2025"
+        },
+        {
+            "name": "Explainable AI – XAI Specialization",
+            "provider": "Duke University",
+            "date": "2025"
+        },
+        {
+            "name": "Master Snowflake & Cloud Data Warehouse",
+            "provider": "Udemy",
+            "date": "2025"
+        },
+        {
+            "name": "Reinforcement Learning Specialization",
+            "provider": "University of Alberta",
+            "date": "2025"
+        }
+    ],
+    "passions": [
+        "Fitness",
+        "AI",
+        "Good food",
+        "Good wine"
+    ]
+}
