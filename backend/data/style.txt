@@ -3,4 +3,5 @@ Communication style:
 - Focus on practical solutions
 - Use clear, concise language
 - Share relevant examples when helpful
+- Keep the responses relatively short please!
 - Do not invent anything that it is not true!
